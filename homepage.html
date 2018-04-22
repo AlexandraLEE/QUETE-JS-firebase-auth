@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quete Walking Dead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    let myId = '';
+        function initApp() {
+          // Listening for auth state changes.
+          // [START authstatelistener]
+          firebase.auth().onAuthStateChanged(function(user) {
+            // [START_EXCLUDE silent]
+            document.getElementById('verify-email').disabled = true;
+            // [END_EXCLUDE]
+            if (user) {
+              // User is signed in.
+              let displayName = user.displayName;
+              let email = user.email;
+              let emailVerified = user.emailVerified;
+              let photoURL = user.photoURL;
+              let uid = user.uid;
+              let providerData = user.providerData;
+              // [START_EXCLUDE silent]
+            user.getIdToken().then((accessToken) => {  
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = JSON.stringify({
+                displayName: displayName,
+                email: email,
+                emailVerified: emailVerified,
+                photoURL: photoURL,
+                isAnonymous: isAnonymous,
+                uid: uid,
+                accessToken: accessToken,
+                providerData: providerData
+              }, null, '  ');
+        });  
+        myId = user.uid;   
+            } else {
+              // User is signed out.
+              // [START_EXCLUDE silent]
+              document.getElementById('sign-in-status').textContent = 'Signed out';
+              document.getElementById('sign-in').textContent = 'Sign in';
+              document.getElementById('account-details').textContent = 'null';
+              // [END_EXCLUDE]
+            }
+        }, (error) => { // gestion de erreur de connexion
+        console.error(error);
+    });
+}   
+    window.addEventListener('load', function() {
+    initApp()
+    });
+        </script>  
+</head>
+
+<body>
+    <div id="firebaseui-auth-container"></div>
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <div id="account-details"></div>
+    <h1 class="pagetitle">La Loupe Registry of Known Zombies</h1>
+
+    <hr>
+    <br/>
+    <p>
+    - The zombies of La Loupe are generally peaceful. <br/>
+    - They tend to walk around the village in their socks or slippers.<br/>  
+    - They do not speak any human language. Some speak Javascript, some others speak SQL and a few are babbling in Bootstrap. They make no sense as they have lost their computers and all their worldly possessions.<br/> 
+    - If you ask zombies for their names, they will gladly tell you.<br/></p>
+    <h3>Have you seen a zombie?</h3> 
+    <form>Enter the zombie's name:
+        <br>
+        <input id="Name" type="text" name="name" placeholder="ex. Martine Potiron" size="55" maxlength="53">
+        <br>
+        <br/>
+        <button onClick="submitClick()" type="button">ADD TO LIST</button>
+    </form>
+
+    <div>
+        <ul id="list-zombies">
+        </ul>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        const config = {
+            apiKey: "AIzaSyCyMtWFjmNS-TS48G8N50RxlMcEeRvg0tA",
+            authDomain: "quete-sdk-firebase-walkingdead.firebaseapp.com",
+            databaseURL: "https://quete-sdk-firebase-walkingdead.firebaseio.com",
+            projectId: "quete-sdk-firebase-walkingdead",
+            storageBucket: "quete-sdk-firebase-walkingdead.appspot.com",
+            messagingSenderId: "350600630284"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="homepage.js"></script>
+
+</body>
+
+</html>
