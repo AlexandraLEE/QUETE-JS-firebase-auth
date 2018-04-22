@@ -1,7 +1,7 @@
  // Initialize Firebase
  var provider = new firebase.auth.GoogleAuthProvider();
 
- function signin() {
+ 
  firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
@@ -18,7 +18,8 @@
     var credential = error.credential;
     // ...
   });
- }
+ 
+ 
  var db = firebase.database();
  const ref = db.ref("zombies");
 
