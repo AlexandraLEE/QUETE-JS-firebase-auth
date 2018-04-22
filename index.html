@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quete Walking Dead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1 class="pagetitle">La Loupe Registry of Known Zombies</h1>
+
+    <form>Enter the zombie's name:
+        <br>
+        <input id="Name" type="text" name="name" placeholder="ex. Martine Potiron" size="55" maxlength="53">
+        <br>
+        <br/>
+        <button onClick="submitClick()" type="button">ADD TO LIST</button>
+    </form>
+
+    <div>
+        <ul id="list-zombies">
+        </ul>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script>
+        const config = {
+            apiKey: "AIzaSyCyMtWFjmNS-TS48G8N50RxlMcEeRvg0tA",
+            authDomain: "quete-sdk-firebase-walkingdead.firebaseapp.com",
+            databaseURL: "https://quete-sdk-firebase-walkingdead.firebaseio.com",
+            projectId: "quete-sdk-firebase-walkingdead",
+            storageBucket: "quete-sdk-firebase-walkingdead.appspot.com",
+            messagingSenderId: "350600630284"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script src="index.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+
+</body>
+
+</html>
