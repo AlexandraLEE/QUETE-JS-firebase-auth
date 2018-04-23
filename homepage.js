@@ -1,5 +1,5 @@
  // Initialize Firebase
-
+/*jshint esversion: 6 */
  var db = firebase.database();
  const ref = db.ref("zombies");
 
@@ -13,10 +13,10 @@
              document.getElementById('list-zombies').innerHTML += '<li>' + childData.name + '</li>';
          }
      });
- })
+ });
 
  function writeUserData(Name) {
-     let user = firebase.auth().currentUser;
+     var user = firebase.auth().currentUser;
 
      db.ref('zombies/' + name).push({
          name: Name,
