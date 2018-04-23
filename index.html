@@ -2,80 +2,82 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quete Firebase Authentication</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script>
-        const config = {
-            apiKey: "AIzaSyCyMtWFjmNS-TS48G8N50RxlMcEeRvg0tA",
-            authDomain: "quete-sdk-firebase-walkingdead.firebaseapp.com",
-            databaseURL: "https://quete-sdk-firebase-walkingdead.firebaseio.com",
-            projectId: "quete-sdk-firebase-walkingdead",
-            storageBucket: "quete-sdk-firebase-walkingdead.appspot.com",
-            messagingSenderId: "350600630284"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <script src="index.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
-    <script>ui.start('#firebaseui-auth-container', {
-            signInOptions: [
-              firebase.auth.EmailAuthProvider.PROVIDER_ID
-            ],
-            // Initialize the FirebaseUI Widget using Firebase.
-        
-          });</script>
-    <script>
-    let ui = new firebaseui.auth.AuthUI(firebase.auth());
- 
- var uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return true;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-      }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'homepage.html',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    ],
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Quete Firebase Authentication</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script>
+    const config = {
+      apiKey: "AIzaSyCyMtWFjmNS-TS48G8N50RxlMcEeRvg0tA",
+      authDomain: "quete-sdk-firebase-walkingdead.firebaseapp.com",
+      databaseURL: "https://quete-sdk-firebase-walkingdead.firebaseio.com",
+      projectId: "quete-sdk-firebase-walkingdead",
+      storageBucket: "quete-sdk-firebase-walkingdead.appspot.com",
+      messagingSenderId: "350600630284"
+    };
+    firebase.initializeApp(config);
+  </script>
+  <script src="index.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+  <script>
+    ui.start('#firebaseui-auth-container', {
+      signInOptions: [
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+      ],
+      // Initialize the FirebaseUI Widget using Firebase.
 
-  };
- // The start method will wait until the DOM is loaded.
-ui.start('#firebaseui-auth-container', uiConfig);
-    </script>   
-    
+    });
+  </script>
+  <script>
+    let ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    var uiConfig = {
+      callbacks: {
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+          // User successfully signed in.
+          // Return type determines whether we continue the redirect automatically
+          // or whether we leave that to developer to handle.
+          return true;
+        },
+        uiShown: function () {
+          // The widget is rendered.
+        }
+      },
+      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+      signInFlow: 'popup',
+      signInSuccessUrl: 'homepage.html',
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      ],
+
+    };
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+
 </head>
 
 <body>
 
-    <h1 class="pagetitle">The unofficial site for the village of LA LOUPE, France.</h1>
-    <hr/>
-    <div id="firebaseui-auth-container"></div>
- 
-    <div style="display: flex;">
-        <p><img src="http://res.cloudinary.com/agent99/image/upload/a_360/v1524419440/wcs%20random/20180409_133713.jpg" alt="La Loupe" height="300px" width="400px" border="1px">
-        </p>                
-        <p style="margin-left: 15px; font-size: large;">Tucked away in the Eure-et-Loir, at the threshhold of the Perche forest, 
-        you will find the quaint French village called LA LOUPE. It is peopled by 
-        a mix of civilised Gauls who are invaded twice every year by a hoard of 
-        baby-coders, known as "Wilders".  According to legend, some Wilders killed 
-        themselves with their bad code and they became zombies. LogIn to this site 
-        to learn more about the "Walking Dead" in La Loupe. 
-        <br/>
-       
-    </div>         
+  <h1 class="pagetitle">The unofficial site for the village of LA LOUPE, France.</h1>
+  <hr/>
+  <div id="firebaseui-auth-container"></div>
+
+  <div style="display: flex;">
+    <p>
+      <img src="http://res.cloudinary.com/agent99/image/upload/a_360/v1524419440/wcs%20random/20180409_133713.jpg" alt="La Loupe"
+        height="300px" width="400px" border="1px">
+    </p>
+    <p style="margin-left: 15px; font-size: large;">Tucked away in the Eure-et-Loir, at the threshhold of the Perche forest, you will find the quaint French village called
+      LA LOUPE. It is peopled by a mix of civilised Gauls who are invaded twice every year by a hoard of baby-coders, known
+      as "Wilders". According to legend, some Wilders killed themselves with their bad code and they became zombies. LogIn
+      to this site to learn more about the "Walking Dead" in La Loupe.
+      <br/>
+
+  </div>
 
 </body>
 
