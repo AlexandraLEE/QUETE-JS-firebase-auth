@@ -2,21 +2,22 @@
 
  var db = firebase.database();
  const ref = db.ref("zombies");
+ 
 
-
- ref.on("value", function (snapshot) {
-    document.getElementById('list-zombies').innerHTML="";
-    snapshot.forEach(function (childSnapshot) {
-        let childData = childSnapshot.val();
-        if(childData.uid == myId || !childData.uid)
-        document.getElementById('list-zombies').innerHTML += '<li>' + childData.name + '</li>';
-    });
-});   
-
+ 
+    ref.once("value", function (snapshot) {     
+        snapshot.forEach(function (childSnapshot) {
+            let childData = childSnapshot.val(); 
+                   
+        document.getElementById('list-zombies').innerHTML += '<li>' + childData.name + '</li>';          
+        
+    }); 
+})
+    
 function writeUserData(Name) {
     db.ref('zombies/' + name).push({
       name: Name,
-      uid: myId,
+      
     });
   }
 
@@ -27,3 +28,5 @@ function writeUserData(Name) {
     window.location.reload();
     
 }
+ 
+

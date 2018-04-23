@@ -41,8 +41,6 @@
       },
       uiShown: function() {
         // The widget is rendered.
-        // Hide the loader.
-        document.getElementById('loader').style.display = 'none';
       }
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -65,7 +63,6 @@ ui.start('#firebaseui-auth-container', uiConfig);
     <h1 class="pagetitle">The unofficial site for the village of LA LOUPE, France.</h1>
     <hr/>
     <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
  
     <div style="display: flex;">
         <p><img src="http://res.cloudinary.com/agent99/image/upload/a_360/v1524419440/wcs%20random/20180409_133713.jpg" alt="La Loupe" height="300px" width="400px" border="1px">
